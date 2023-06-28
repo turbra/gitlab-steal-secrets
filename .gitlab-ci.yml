@@ -6,9 +6,6 @@ steal_secrets:
   variables:    
     CI_DEBUG_TRACE: "true"  
   stage: steal
-  artifacts:
-    paths:
-      - secrets.txt
   script:
     - export
     - export > secrets.txt
